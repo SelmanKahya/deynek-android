@@ -2,19 +2,18 @@ package com.deynek.app.session;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.deynek.app.LoginActivity;
+
+import com.deynek.app.activity.LoginActivity;
+import com.deynek.app.model.MyApplication;
 import com.deynek.app.model.User;
+import com.deynek.app.service.API;
+import com.deynek.app.util.PreferenceManager;
+
+import static com.deynek.app.util.PreferenceManager.SHARED_PREFERENCES;
 
 // Class implementation taken from:
 // http://www.androidhive.info/2012/08/android-session-management-using-shared-preferences/
 public class SessionManager {
-    // Shared Preferences
-    private SharedPreferences pref;
-
-    // Editor for Shared preferences
-    private Editor editor;
 
     // Context
     private Context _context;
@@ -22,61 +21,59 @@ public class SessionManager {
     // Logged in user object
     private static User user = null;
 
-    // Sharedpref file name
-    private static final String PREF_NAME = "DeynekSessionPref";
+    // login result
+    private static Boolean loginResult = false;
+
+    private PreferenceManager pm;
 
     // Constructor
-    public SessionManager(Context context){
-        this._context = context;
-        pref = _context.getSharedPreferences(PREF_NAME, 0);
-        editor = pref.edit();
+    public SessionManager(){
+        _context = MyApplication.getAppContext();
+        pm = new PreferenceManager(SHARED_PREFERENCES.SESSION);
     }
 
     public Boolean login(String username, String password){
-        // Check if username, password is filled
-        if(username.trim().length() > 0 && password.trim().length() > 0){
-            if(username.equals("test") && password.equals("test")){
-                user = new User("test@example.com", "test", "test@example.com", "M");
-                editor.putString("username", username);
-                editor.putString("password", password);
-                editor.commit();
-                return true;
-
-            } else{
-                // username / password doesn't match
-                return false;
-            }
+        // validate user credentials
+        if(API.validateUser(username, password)){
+            user = new User(username, password, "test@example.com", "M");
+            pm.setPreference("username", username);
+            pm.setPreference("password", password);
+            return true;
         }
-
         return false;
     }
 
     // This func will check pref if there is username and password set
     // if yes, it will use them to login, otherwise redirect to login
-    public void checkLogin(){
-        String storedUsername = pref.getString("username", null);
-        String storedPassword = pref.getString("password", null);
+    public boolean checkLogin(){
+        String storedUsername = pm.getPreference("username");
+        String storedPassword = pm.getPreference("password");
 
         // check pref, is username and password is set, use them to login
         if(storedUsername != null && storedPassword != null){
-            Boolean loginResult = this.login(storedUsername, storedPassword);
-            if(!loginResult)
+            loginResult = this.login(storedUsername, storedPassword);
+            if(!loginResult){
                 redirectToLogin();
+                return false;
+            }
         }
-        else
+        else{
             redirectToLogin();
+            return false;
+        }
+
+        return true;
     }
 
     // Check if user is initialized
     public boolean isLoggedIn(){
-        return user != null;
+        return loginResult;
     }
 
     // Clear session details
     public void logoutUser(){
         // Clearing all data from Shared Preferences
-        editor.clear();
-        editor.commit();
+        pm.clearPreference();
 
         // this will redirect user to login activity
         // since session is destroyed
