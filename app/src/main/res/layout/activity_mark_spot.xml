@@ -27,17 +27,47 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
                 android:text="Click on the map, and mark your parking spot."
-                android:layout_weight="5"
-                android:gravity="center"/>
-            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/textViewDefault"
+                />
+
+            <SeekBar
+                android:id="@+id/min_seek_bar"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="5"
-                android:text="I parked here >>"
-                android:onClick="onParkedButtonClick"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:progress="5"
+                android:secondaryProgress="5" />
+
+            <TextView
+                android:id="@+id/minutes_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Minutes"
+                android:layout_gravity="center"
+                android:textColor="@color/textViewDefault"
+                android:textSize="20sp" />
+
+
+            <Button
+                android:id="@+id/buttonMark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Timer!"
+                android:padding="20dp"
+                android:onClick="onStartTimerButtonClick"
+                android:background="@drawable/rounded_corners"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                />
 
         </LinearLayout>
     </LinearLayout>
