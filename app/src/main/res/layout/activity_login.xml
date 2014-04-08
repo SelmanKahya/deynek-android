@@ -17,6 +17,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="55sp"
         android:layout_marginTop="40dp"
+        android:textColor="@color/textViewDefault"
         />
 
     <LinearLayout
@@ -31,6 +32,7 @@
             android:layout_height="0dp"
             android:layout_weight="5"
             android:hint="Email Address"
+            android:textColorHint="@color/textViewDefault"
             android:inputType="textEmailAddress"
             />
 
@@ -40,8 +42,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="15"
             android:hint="Password"
+            android:textColorHint="@color/textViewDefault"
             android:layout_marginTop="15dp"
             android:inputType="textPassword"
+            android:textColor="@color/textViewDefault"
             />
 
         <Button
@@ -50,6 +54,7 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:layout_marginTop="15dp"
+            android:textColor="@color/textViewDefault"
             />
 
         </LinearLayout>
@@ -61,6 +66,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:layout_above="@+id/buttonSignup"
+        android:textColor="@color/textViewDefault"
         />
 
     <Button
@@ -71,6 +77,7 @@
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:textColor="@color/textViewDefault"
         />
 
 </RelativeLayout>
