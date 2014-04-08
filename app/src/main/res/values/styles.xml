@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:textColorPrimary">#FF00FF</item>
     </style>
 
     <style name="ShowTitleBar" parent="Theme.AppCompat.Light.DarkActionBar">
