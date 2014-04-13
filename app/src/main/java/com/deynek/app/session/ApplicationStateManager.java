@@ -10,7 +10,6 @@ public class ApplicationStateManager {
 
     public enum STATES {
         DEFAULT,
-        PARKED,
         LEAVING,
         LEFT,
         ARRIVED
