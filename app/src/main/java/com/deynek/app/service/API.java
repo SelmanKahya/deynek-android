@@ -22,10 +22,11 @@ public class API {
 
     public static ArrayList findParkingSpots(Location loc) {
         ArrayList<LatLng> locs = new ArrayList<LatLng>();
-        locs.add(new LatLng(37.784820, -122.413470));
-        locs.add(new LatLng(37.784879, -122.412665));
-        locs.add(new LatLng(37.784464, -122.412740));
-        locs.add(new LatLng(37.783082, -122.412064));
+        locs.add(new LatLng(37.7238256,-122.4767228));
+        locs.add(new LatLng(37.7238155,-122.4765565));
+        locs.add(new LatLng(37.7238049,-122.4760267));
+        locs.add(new LatLng(37.7235609,-122.4766289));
+        locs.add(new LatLng(37.7233111,-122.4771351));
         return locs;
     }
 }
