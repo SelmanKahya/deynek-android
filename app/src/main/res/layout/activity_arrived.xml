@@ -6,7 +6,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.deynek.app.activity.find.ArrivedActivity">
+    tools:context="com.deynek.app.activity.find.ArrivedActivity"
+    android:background="@color/background">
 
 
     <LinearLayout
@@ -24,6 +25,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
+            android:textColor="@color/textViewDefault"
             />
 
         <Button
@@ -33,6 +35,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:onClick="onNavigateClick"
+            android:textColor="@color/textViewDefault"
             />
 
         <Button
@@ -40,12 +43,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="I parked!"
-            android:padding="30dp"
+            android:padding="20dp"
             android:layout_marginTop="15dp"
             android:onClick="onParkedClick"
             android:background="@drawable/rounded_corners"
             android:textColor="#ffffff"
-            android:textSize="25sp"
+            android:textSize="20sp"
             />
 
 
