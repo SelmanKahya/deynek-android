@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.deynek.app.activity.find.ArrivedActivity;
-import com.deynek.app.activity.mark.LeaveSpotActivity;
 import com.deynek.app.activity.mark.LeavingSpotActivity;
 import com.deynek.app.activity.LoginActivity;
 import com.deynek.app.R;
@@ -47,16 +46,8 @@ public class MyActivity extends ActionBarActivity {
         Intent i;
         ApplicationStateManager.STATES state = ApplicationStateManager.getState();
 
-        // PARKED
-        if(state == ApplicationStateManager.STATES.PARKED && !(act instanceof LeaveSpotActivity)){
-            i = new Intent(getApplicationContext(), LeaveSpotActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(i);
-            finish();
-        }
-
         // LEAVING
-        else if(state == ApplicationStateManager.STATES.LEAVING && !(act instanceof LeavingSpotActivity)){
+        if(state == ApplicationStateManager.STATES.LEAVING && !(act instanceof LeavingSpotActivity)){
             i = new Intent(getApplicationContext(), LeavingSpotActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
