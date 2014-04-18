@@ -9,10 +9,13 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.deynek.app.R;
 import com.deynek.app.model.MyActivity;
 import com.deynek.app.session.ApplicationStateManager;
+import com.deynek.app.session.ParkInfoManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdate;
@@ -36,10 +39,32 @@ public class MarkSpotActivity extends MyActivity {
     private LocationListener locationListener;
     private LocationManager locationManager;
 
+    private TextView minutes_text;
+    private SeekBar minControl;
+    private final int MIN_LEAVING_MINS = 3;
+    private final int MAX_LEAVING_MINS = 15;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, this);
         setContentView(R.layout.activity_mark_spot);
+
+        minutes_text = (TextView) findViewById(R.id.minutes_text);
+        minutes_text.setText(MIN_LEAVING_MINS + " Minutes");
+        minControl = (SeekBar) findViewById(R.id.min_seek_bar);
+        minControl.setProgress(0);
+
+        minControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                minutes_text.setText(calculateMin(progress) + " Minutes");
+            }
+        });
 
         // Getting Google Play availability status
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getBaseContext());
@@ -123,18 +148,12 @@ public class MarkSpotActivity extends MyActivity {
 
     // centers camera and zoom in
     private void focusOnLocation(Location loc) {
-        CameraUpdate center =
-                CameraUpdateFactory.newLatLng(new LatLng(loc.getLatitude(), loc.getLongitude()));
-        map.moveCamera(center);
-        map.animateCamera(CameraUpdateFactory.zoomTo(19));
-    }
-
-    public void onParkedButtonClick(View v) {
-        ApplicationStateManager.saveState(ApplicationStateManager.STATES.PARKED);
-        Intent i = new Intent(getApplicationContext(), MarkedActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
-        finish();
+        if(loc != null){
+            CameraUpdate center =
+                    CameraUpdateFactory.newLatLng(new LatLng(loc.getLatitude(), loc.getLongitude()));
+            map.moveCamera(center);
+            map.animateCamera(CameraUpdateFactory.zoomTo(19));
+        }
     }
 
     public void startGPS(){
@@ -167,5 +186,26 @@ public class MarkSpotActivity extends MyActivity {
     protected void onResume() {
         super.onResume();
         startGPS();
+    }
+
+    public void onStartTimerButtonClick(View v) {
+
+        // save app state
+        ApplicationStateManager.saveState(ApplicationStateManager.STATES.LEAVING);
+
+        // save leaving time in pref
+        ParkInfoManager park = new ParkInfoManager();
+        park.saveParkingTime();
+        park.saveLeavingTime(calculateMin(minControl.getProgress()));
+
+        // start new activity
+        Intent i = new Intent(getApplicationContext(), LeavingSpotActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+        finish();
+    }
+
+    public int calculateMin(int progress){
+        return (int) Math.floor(((float) progress / 100) * (MAX_LEAVING_MINS - MIN_LEAVING_MINS) + MIN_LEAVING_MINS);
     }
 }
