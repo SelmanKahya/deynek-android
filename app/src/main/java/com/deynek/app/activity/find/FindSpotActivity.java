@@ -3,6 +3,7 @@ package com.deynek.app.activity.find;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -26,6 +27,10 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
+import com.google.android.gms.maps.model.GroundOverlay;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -38,6 +43,8 @@ public class FindSpotActivity extends MyActivity {
     private boolean initialPositionSet = false;
     private Marker pinMarker;
     private ArrayList<Marker> markers = new ArrayList<Marker>();
+
+    private Circle drawnCircle;
 
     private String provider;
     private LocationListener locationListener;
@@ -109,6 +116,18 @@ public class FindSpotActivity extends MyActivity {
                 @Override
                 public void onMapClick(LatLng point) {
                     Log.d("Map", "onMapClick clicked: " + point.toString());
+
+                    CircleOptions circle = new CircleOptions()
+                            .center(new LatLng(point.latitude, point.longitude))
+                            .radius(100)
+                            .strokeColor(Color.RED)
+                            .strokeWidth(5)
+                            .fillColor(0x40ff0000);  //semi-transparent
+
+                    if(drawnCircle != null)
+                        drawnCircle.remove();
+
+                    drawnCircle = map.addCircle(circle);
                 }
             });
 
@@ -152,23 +171,28 @@ public class FindSpotActivity extends MyActivity {
     private void drawPin(ArrayList<LatLng> locs) {
         map.clear();
 
+        String[] names = {"Maria", "John", "Carol", "Nick", "Lilly"};
+        String[] minutes = {"1", "4", "3", "8", "12"};
+
         for(int i=0; i<locs.size(); i++){
             LatLng loc = locs.get(i);
             // Add marker of user's position
             MarkerOptions userIndicator = new MarkerOptions()
                     .position(loc)
-                    .title("Some body here")
-                    .snippet("lat:" + loc.latitude + ", lng:" + loc.longitude);
+                    .title(names[i] + " leaving in " + minutes[i] + " mins.")
+                    .snippet("Would you like to park here? Click me!");
             map.addMarker(userIndicator);
         }
     }
 
     // centers camera and zoom in
     private void focusOnLocation(Location loc) {
-        CameraUpdate center =
-                CameraUpdateFactory.newLatLng(new LatLng(loc.getLatitude(), loc.getLongitude()));
-        map.moveCamera(center);
-        map.animateCamera(CameraUpdateFactory.zoomTo(19));
+        if(loc != null){
+            CameraUpdate center =
+                    CameraUpdateFactory.newLatLng(new LatLng(loc.getLatitude(), loc.getLongitude()));
+            map.moveCamera(center);
+            map.animateCamera(CameraUpdateFactory.zoomTo(19));
+        }
     }
 
     public void startGPS(){
