@@ -46,26 +46,27 @@
 
         <activity
             android:name=".activity.mark.MarkedActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_marked" >
         </activity>
         <activity
-            android:name=".activity.mark.LeaveSpotActivity"
-            android:label="@string/title_activity_leave_spot" >
-        </activity>
-        <activity
             android:name=".activity.mark.LeavingSpotActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_leaving_spot" >
         </activity>
         <activity
             android:name=".activity.mark.LeftSpotActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_left_spot" >
         </activity>
         <activity
             android:name=".activity.find.FindSpotActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_find_spot" >
         </activity>
         <activity
             android:name=".activity.find.ArrivedActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_arrived" >
         </activity>
     </application>
