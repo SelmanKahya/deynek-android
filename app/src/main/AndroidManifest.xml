@@ -18,7 +18,7 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.deynek.app.activity.MainActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +27,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="com.deynek.app.activity.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activity.mark.MarkSpotActivity"
+            android:name="com.deynek.app.activity.mark.MarkSpotActivity"
             android:label="@string/title_activity_mark_spot"
             android:screenOrientation="portrait" >
         </activity>
@@ -45,29 +45,37 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".activity.mark.MarkedActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_marked" >
+            android:name="com.deynek.app.activity.mark.MarkedActivity"
+            android:label="@string/title_activity_marked"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activity.mark.LeavingSpotActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_leaving_spot" >
+            android:name="com.deynek.app.activity.mark.LeavingSpotActivity"
+            android:label="@string/title_activity_leaving_spot"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activity.mark.LeftSpotActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_left_spot" >
+            android:name="com.deynek.app.activity.mark.LeftSpotActivity"
+            android:label="@string/title_activity_left_spot"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activity.find.FindSpotActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_find_spot" >
+            android:name="com.deynek.app.activity.find.PickLocationActivity"
+            android:label="@string/title_activity_pick_location"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activity.find.ArrivedActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_arrived" >
+            android:name="com.deynek.app.activity.find.ArrivedActivity"
+            android:label="@string/title_activity_arrived"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.deynek.app.activity.find.FindActivity"
+            android:label="@string/title_activity_find" >
+        </activity>
+        <activity
+            android:name="com.deynek.app.activity.find.FindingActivity"
+            android:label="@string/title_activity_finding" >
         </activity>
     </application>
 
