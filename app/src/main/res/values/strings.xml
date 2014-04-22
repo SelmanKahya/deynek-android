@@ -11,7 +11,9 @@
     <string name="title_activity_leave_spot">LeaveSpotActivity</string>
     <string name="title_activity_leaving_spot">LeavingSpotActivity</string>
     <string name="title_activity_left_spot">LeftSpotActivity</string>
-    <string name="title_activity_find_spot">FindSpotActivity</string>
+    <string name="title_activity_pick_location">PickLocationActivity</string>
     <string name="title_activity_arrived">Arrived</string>
+    <string name="title_activity_find">FindActivity</string>
+    <string name="title_activity_finding">FindingActivity</string>
 
 </resources>
