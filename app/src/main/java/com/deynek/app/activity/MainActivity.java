@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.deynek.app.R;
-import com.deynek.app.activity.find.FindSpotActivity;
+import com.deynek.app.activity.find.FindActivity;
+import com.deynek.app.activity.find.PickLocationActivity;
 import com.deynek.app.activity.mark.MarkSpotActivity;
 import com.deynek.app.model.MyActivity;
 
@@ -27,7 +28,7 @@ public class MainActivity extends MyActivity {
     }
 
     public void onFindButtonClick(View v) {
-        Intent i = new Intent(getApplicationContext(), FindSpotActivity.class);
+        Intent i = new Intent(getApplicationContext(), FindActivity.class);
         startActivity(i);
     }
 }
