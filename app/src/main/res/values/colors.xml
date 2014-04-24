@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="background">#ff44619d</color>
+    <color name="profile_background">#ff2e569d</color>
     <color name="textViewDefault">#ffffff</color>
     <color name="buttonDefault">#ebe6fa</color>
 </resources>

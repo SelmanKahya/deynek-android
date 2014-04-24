@@ -15,5 +15,9 @@
     <string name="title_activity_arrived">Arrived</string>
     <string name="title_activity_find">FindActivity</string>
     <string name="title_activity_finding">FindingActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login1">Login1Activity</string>
+    <string name="title_activity_my_profile">MyProfile</string>
+    <string name="title_activity_find_activity__new">FindActivity_NEW</string>
 
 </resources>
