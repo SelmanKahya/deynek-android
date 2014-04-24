@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.deynek.app.activity.LoginActivity"
+            android:name="com.deynek.app.activity.account.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
@@ -76,6 +76,23 @@
         <activity
             android:name="com.deynek.app.activity.find.FindingActivity"
             android:label="@string/title_activity_finding" >
+        </activity>
+
+        <service
+            android:name="com.deynek.app.service.TrackLocation"
+            android:exported="false" />
+
+        <activity
+            android:name="com.deynek.app.activity.account.Login1Activity"
+            android:label="@string/title_activity_login1" >
+        </activity>
+        <activity
+            android:name="com.deynek.app.activity.account.MyProfile"
+            android:label="@string/title_activity_my_profile" >
+        </activity>
+        <activity
+            android:name="com.deynek.app.activity.find.FindActivity_NEW"
+            android:label="@string/title_activity_find_activity__new" >
         </activity>
     </application>
 
