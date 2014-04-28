@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context="com.deynek.app.activity.account.MyProfile">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/profile_background"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/profile" />
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textColor="@color/textViewDefault"
+                android:text="Selman Kahya"
+                android:id="@+id/user_name"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/textViewDefault"
+                android:text="✦✦✦✦✦ VIP Member"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout2">
+
+
+        <Button
+            android:id="@+id/buttonMark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mark my spot!"
+            android:padding="20dp"
+            android:layout_marginTop="15dp"
+            android:onClick="onMarkButtonClick"
+            android:background="@drawable/rounded_corners"
+            android:drawableLeft="@drawable/mark_spot"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            />
+
+
+        <Button
+            android:id="@+id/buttonFind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find a spot!"
+            android:padding="20dp"
+            android:layout_marginTop="15dp"
+            android:onClick="onFindButtonClick"
+            android:background="@drawable/rounded_corners"
+            android:drawableLeft="@drawable/find_spot"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            />
+
+
+
+
+        <Button
+            android:id="@+id/buttonSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:onClick="onLogoutClick"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/textViewDefault"
+            />
+
+    </LinearLayout>
+
+    <WebView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/webView"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

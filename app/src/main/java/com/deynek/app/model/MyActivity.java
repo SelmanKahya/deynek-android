@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.deynek.app.activity.find.ArrivedActivity;
 import com.deynek.app.activity.mark.LeavingSpotActivity;
-import com.deynek.app.activity.LoginActivity;
+import com.deynek.app.activity.account.LoginActivity;
 import com.deynek.app.R;
 import com.deynek.app.session.ApplicationStateManager;
 import com.deynek.app.session.SessionManager;

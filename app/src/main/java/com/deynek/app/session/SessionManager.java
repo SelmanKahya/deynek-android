@@ -3,7 +3,7 @@ package com.deynek.app.session;
 import android.content.Context;
 import android.content.Intent;
 
-import com.deynek.app.activity.LoginActivity;
+import com.deynek.app.activity.account.LoginActivity;
 import com.deynek.app.model.MyApplication;
 import com.deynek.app.model.User;
 import com.deynek.app.service.API;
