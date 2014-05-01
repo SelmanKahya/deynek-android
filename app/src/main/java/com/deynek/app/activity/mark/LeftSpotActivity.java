@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.deynek.app.R;
 import com.deynek.app.activity.MainActivity;
+import com.deynek.app.activity.account.MyProfile;
 import com.deynek.app.model.MyActivity;
 import com.deynek.app.session.ApplicationStateManager;
 
@@ -23,7 +24,7 @@ public class LeftSpotActivity extends MyActivity {
         ApplicationStateManager.saveState(ApplicationStateManager.STATES.DEFAULT);
 
         // start new activity
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), MyProfile.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
         finish();

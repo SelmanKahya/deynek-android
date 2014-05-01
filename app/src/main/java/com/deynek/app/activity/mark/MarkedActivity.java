@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.deynek.app.R;
 import com.deynek.app.activity.MainActivity;
+import com.deynek.app.activity.account.MyProfile;
 import com.deynek.app.model.MyActivity;
 
 
@@ -18,7 +19,7 @@ public class MarkedActivity extends MyActivity {
     }
 
     public void onGoToButtonClick(View v) {
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), MyProfile.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
         finish();

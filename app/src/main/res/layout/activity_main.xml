@@ -15,60 +15,8 @@
         android:text="Deynek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="55sp"
-        android:layout_marginTop="40dp"
-        android:textColor="@color/textViewDefault"
-        />
-
-
-    <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
-
-
-        <Button
-            android:id="@+id/buttonMark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mark my spot!"
-            android:padding="20dp"
-            android:layout_marginTop="15dp"
-            android:onClick="onMarkButtonClick"
-            android:background="@drawable/rounded_corners"
-            android:drawableLeft="@drawable/mark_spot"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            />
-
-
-        <Button
-            android:id="@+id/buttonFind"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Find a spot!"
-            android:padding="20dp"
-            android:layout_marginTop="15dp"
-            android:onClick="onFindButtonClick"
-            android:background="@drawable/rounded_corners"
-            android:drawableLeft="@drawable/find_spot"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/buttonSignup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:onClick="onLogoutClick"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
+        android:textSize="55sp"
         android:textColor="@color/textViewDefault"
         />
 

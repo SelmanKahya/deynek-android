@@ -11,14 +11,17 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.deynek.app.R;
 import com.deynek.app.model.MyActivity;
 import com.deynek.app.model.MyApplication;
 import com.deynek.app.service.API;
+import com.deynek.app.service.TrackLocation;
 import com.deynek.app.session.ApplicationStateManager;
 import com.deynek.app.session.ParkInfoManager;
 import com.google.android.gms.common.ConnectionResult;
@@ -44,10 +47,48 @@ public class PickLocationActivity extends MyActivity {
     private LatLng userLoc;
     private int walkingTime = 10;
 
+    private ProgressBar spinner;
+    private Context ctx;
+    private Intent service;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, this);
         setContentView(R.layout.activity_pick_location);
+
+        spinner = (ProgressBar) findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
+        spinner.setVisibility(View.VISIBLE);
+
+        ctx = getApplicationContext();
+        service = new Intent(ctx, TrackLocation.class);
+
+        final Handler h = new Handler();
+
+        Runnable r1 = new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    ParkInfoManager park = new ParkInfoManager();
+                    park.saveParkingLocation("37.7233111,-122.4771351");
+
+                    startService(service);
+
+                    ApplicationStateManager.saveState(ApplicationStateManager.STATES.ARRIVED);
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=37.7233111,-122.4771351"));
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+                    finish();
+                } catch (ActivityNotFoundException innerEx) {
+                    Toast.makeText(MyApplication.getAppContext(), "Please install a maps application", Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+
+        h.postDelayed(r1, 5000); // 5 second delay
+
+
 
         // get user loc
         Bundle extras = getIntent().getExtras();
@@ -139,6 +180,21 @@ public class PickLocationActivity extends MyActivity {
             CameraUpdate center = CameraUpdateFactory.newLatLng(userLoc);
             map.moveCamera(center);
             map.animateCamera(CameraUpdateFactory.zoomTo(14));
+
+            // meters
+            int radius = (walkingTime * 90) / 2;
+
+            CircleOptions circle = new CircleOptions()
+                    .center(new LatLng(userLoc.latitude, userLoc.longitude))
+                    .radius(radius)
+                    .strokeColor(R.color.background)
+                    .strokeWidth(5)
+                    .fillColor(0x40ff0000);  //semi-transparent
+
+            if(drawnCircle != null)
+                drawnCircle.remove();
+
+            drawnCircle = map.addCircle(circle);
         }
     }
 
