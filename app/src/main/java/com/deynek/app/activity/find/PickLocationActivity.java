@@ -5,7 +5,9 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -36,6 +38,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -88,24 +91,6 @@ public class PickLocationActivity extends MyActivity {
 
         h.postDelayed(r1, 5000); // 5 second delay
 
-
-
-        // get user loc
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            walkingTime = extras.getInt("USER_MINS");
-            String value = extras.getString("USER_LOC");
-
-            if(value != null){
-                List<String> coords = Arrays.asList(value.split(","));
-                if(coords.size() == 2){
-                    double latitude = Double.parseDouble(coords.get(0));
-                    double longitude = Double.parseDouble(coords.get(1));
-                    userLoc = new LatLng(latitude, longitude);
-                }
-            }
-        }
-
         LocationManager lm = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
 
         boolean gps_enabled=false;
@@ -146,6 +131,28 @@ public class PickLocationActivity extends MyActivity {
             map.setMyLocationEnabled(true);
             map.setBuildingsEnabled(true);
             map.setIndoorEnabled(true);
+
+            // get user loc
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                walkingTime = Integer.parseInt(extras.getString("USER_MINS"));
+                String value = extras.getString("USER_ADDRESS");
+
+                if(value != null){
+                    Geocoder geocoder = new Geocoder(getApplicationContext());
+                    List<Address> addresses;
+                    try {
+                        addresses = geocoder.getFromLocationName(value, 1);
+                        if(addresses.size() > 0) {
+                            double latitude= addresses.get(0).getLatitude();
+                            double longitude= addresses.get(0).getLongitude();
+                            userLoc = new LatLng(latitude, longitude);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
 
             focusOnLocation();
 
@@ -196,10 +203,5 @@ public class PickLocationActivity extends MyActivity {
 
             drawnCircle = map.addCircle(circle);
         }
-    }
-
-    public void onMatchButtonClick(View v) {
-        Intent i = new Intent(getApplicationContext(), FindingActivity.class);
-        startActivity(i);
     }
 }

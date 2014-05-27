@@ -37,14 +37,14 @@ public class TrackLocation extends Service {
 
     @Override
     public void onCreate() {
-        Toast.makeText(this, "The new Service was Created", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "The new Service was Created", Toast.LENGTH_LONG).show();
         startGPS();
     }
 
     @Override
     public void onStart(Intent intent, int startId) {
         // For time consuming an long tasks you can launch a new thread here...
-        Toast.makeText(this, " Service Started", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, " Service Started", Toast.LENGTH_LONG).show();
 
         /*
         mHandler.post(new Runnable(){
@@ -57,7 +57,7 @@ public class TrackLocation extends Service {
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
         stopGPS();
     }
 
@@ -79,13 +79,13 @@ public class TrackLocation extends Service {
 
             Log.d("Map", "location changed: " + loc.toString());
 
-            Toast.makeText(
+            /*Toast.makeText(
                     getBaseContext(),
                     "Location stored: \nLat: " + loc.getLatitude()
                             + " \nLon: " + loc.getLongitude()
                             + " \nAlt: " + (loc.hasAltitude() ? loc.getAltitude()+"m":"?")
                             + " \nAcc: " + (loc.hasAccuracy() ? loc.getAccuracy()+"m":"?"),
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show();*/
 
         }
         public void onProviderDisabled(String provider) {}

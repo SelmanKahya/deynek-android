@@ -32,7 +32,6 @@ public class LoginActivity extends MyActivity {
         super.onCreate(savedInstanceState, this);
         setContentView(R.layout.activity_login);
 
-
         // Session Manager
         session = new SessionManager();
 
@@ -42,7 +41,6 @@ public class LoginActivity extends MyActivity {
 
         // Login button
         btnLogin = (Button) findViewById(R.id.buttonLogin);
-
 
         // Login button click event
         btnLogin.setOnClickListener(new View.OnClickListener() {

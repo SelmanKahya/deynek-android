@@ -69,30 +69,25 @@
             android:label="@string/title_activity_arrived"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name="com.deynek.app.activity.find.FindActivity"
-            android:label="@string/title_activity_find" >
-        </activity>
-        <activity
-            android:name="com.deynek.app.activity.find.FindingActivity"
-            android:label="@string/title_activity_finding" >
-        </activity>
 
         <service
             android:name="com.deynek.app.service.TrackLocation"
             android:exported="false" />
 
         <activity
-            android:name="com.deynek.app.activity.account.Login1Activity"
-            android:label="@string/title_activity_login1" >
-        </activity>
-        <activity
             android:name="com.deynek.app.activity.account.MyProfile"
-            android:label="@string/title_activity_my_profile" >
+            android:label="@string/title_activity_my_profile"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
         </activity>
         <activity
             android:name="com.deynek.app.activity.find.FindActivity_NEW"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:label="@string/title_activity_find_activity__new" >
+        </activity>
+        <activity
+            android:name="com.deynek.app.activity.SettingsActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 

@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            android:hint="Email Address"
+            android:hint="Username"
+            android:gravity="center"
             android:textColorHint="@color/textViewDefault"
             android:inputType="textEmailAddress"
             />
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="15"
             android:hint="Password"
+            android:gravity="center"
             android:textColorHint="@color/textViewDefault"
             android:layout_marginTop="15dp"
             android:inputType="textPassword"

@@ -23,7 +23,6 @@ public class ArrivedActivity extends MyActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, this);
         setContentView(R.layout.activity_arrived);
-
         service = new Intent(getApplicationContext(), TrackLocation.class);
     }
 

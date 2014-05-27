@@ -2,16 +2,10 @@ package com.deynek.app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.deynek.app.R;
 import com.deynek.app.activity.account.MyProfile;
-import com.deynek.app.activity.find.FindActivity;
-import com.deynek.app.activity.find.PickLocationActivity;
-import com.deynek.app.activity.mark.LeftSpotActivity;
-import com.deynek.app.activity.mark.MarkSpotActivity;
 import com.deynek.app.model.MyActivity;
-import com.deynek.app.session.ApplicationStateManager;
 import com.deynek.app.util.MyCountDownTimer;
 
 public class MainActivity extends MyActivity {
